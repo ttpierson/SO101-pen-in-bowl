@@ -7,7 +7,12 @@ name = "so101-isaac"
 version = "0.1.0"
 description = "SO-101 pen-in-bowl Isaac Lab task, scripted IK policy, and their Inspect Robots entry points"
 requires-python = ">=3.10"
-dependencies = ["inspect-robots", "inspect-robots-isaacsim", "numpy"]
+dependencies = [
+    # Inspect Robots (https://github.com/robocurve/inspect-robots) and its Isaac Sim plugin
+    "inspect-robots @ git+https://github.com/robocurve/inspect-robots",
+    "inspect-robots-isaacsim @ git+https://github.com/robocurve/inspect-robots#subdirectory=plugins/inspect-robots-isaacsim",
+    "numpy",
+]
 
 [tool.setuptools]
 py-modules = ["so101_inspect", "ik_policy", "run_eval", "so101_kinematics", "pen_bowl_env", "so101_cfg"]

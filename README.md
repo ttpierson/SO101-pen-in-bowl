@@ -16,6 +16,32 @@ These are `inspect-robots video` renders of one successful trial (the GIF above 
 The scripted baseline scores about 8/10 on `-T scenes=10`. The usual failures are the opening jaw
 flicking the pen out of the bowl, or the 14 cm pen coming to rest propped on the rim.
 
+## Built with Inspect Robots
+
+[![Built with Inspect Robots](https://img.shields.io/badge/built%20with-Inspect%20Robots-blue)](https://github.com/robocurve/inspect-robots)
+
+The evaluation in this repo runs on [Inspect Robots](https://github.com/robocurve/inspect-robots)
+by Robocurve. The task, policy and embodiment here are Inspect Robots plugins, and
+Inspect Robots handles the rest:
+- the rollout loop
+- the safety guardrails
+- scoring (`success_at_end`, `episode_length`)
+- eval logs, frame storage and the HTML/video replays
+
+The Isaac Sim connection builds on its
+[`inspect-robots-isaacsim`](https://github.com/robocurve/inspect-robots/tree/main/plugins/inspect-robots-isaacsim) plugin.
+
+If you use this work, please also cite Inspect Robots:
+
+```bibtex
+@software{inspect_robots,
+  title  = {Inspect Robots: The open-source evaluation framework for physical AI},
+  author = {{Robocurve}},
+  url    = {https://github.com/robocurve/inspect-robots},
+  note   = {MIT License}
+}
+```
+
 ## Files
 
 | File | What it is |
