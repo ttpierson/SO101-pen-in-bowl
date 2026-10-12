@@ -1,0 +1,630 @@
+{
+  "error": null,
+  "eval": {
+    "created": "2026-10-12T05:42:01.800980+00:00",
+    "embodiment": "so101_pen_bowl",
+    "embodiment_info": {
+      "capabilities": [
+        "privileged_success",
+        "renderable",
+        "resettable",
+        "seedable"
+      ],
+      "control_hz": 30.0,
+      "is_simulated": true
+    },
+    "environment_id": null,
+    "environment_revision": null,
+    "git_commit": null,
+    "grader": null,
+    "grader_config": {},
+    "inspect_robots_version": "0.59.1.dev13+g3c832c34b",
+    "max_seconds": null,
+    "max_steps": 330,
+    "policy": "so101_ik_pick_place",
+    "policy_checkpoint": null,
+    "policy_config": {
+      "action_horizon": 10,
+      "replan_interval": null,
+      "temperature": null
+    },
+    "seed": 0,
+    "task": "so101-pen-in-bowl"
+  },
+  "results": {
+    "errored_trials": 0,
+    "metrics": {
+      "episode_length": 255.0,
+      "success_at_end": 0.8
+    },
+    "total_scenes": 5,
+    "total_trials": 5
+  },
+  "samples": [
+    {
+      "epochs": [
+        {
+          "episode_length": 236.0,
+          "success_at_end": 1.0
+        }
+      ],
+      "error": null,
+      "instruction": "put the pen in the bowl",
+      "judgement_sources": [
+        null
+      ],
+      "operator_judgements": [
+        null
+      ],
+      "operator_messages": [
+        []
+      ],
+      "operator_notes": [
+        null
+      ],
+      "policy_transcripts": [
+        {
+          "waypoints": [
+            {
+              "ik_err_m": 0.0,
+              "name": "above_pen",
+              "target": [
+                0.177,
+                -0.1075,
+                0.08
+              ]
+            },
+            {
+              "ik_err_m": 0.0,
+              "name": "at_pen",
+              "target": [
+                0.177,
+                -0.1075,
+                0.011
+              ]
+            },
+            {
+              "ik_err_m": 0.0,
+              "name": "grasp",
+              "target": [
+                0.177,
+                -0.1075,
+                0.011
+              ]
+            },
+            {
+              "ik_err_m": 0.0022,
+              "name": "lift",
+              "target": [
+                0.177,
+                -0.1075,
+                0.11
+              ]
+            },
+            {
+              "ik_err_m": 0.0028,
+              "name": "above_bowl",
+              "target": [
+                0.17,
+                0.14,
+                0.12
+              ]
+            },
+            {
+              "ik_err_m": 0.0,
+              "name": "lower",
+              "target": [
+                0.17,
+                0.14,
+                0.065
+              ]
+            },
+            {
+              "ik_err_m": 0.0,
+              "name": "release",
+              "target": [
+                0.17,
+                0.14,
+                0.065
+              ]
+            },
+            {
+              "ik_err_m": 0.0053,
+              "name": "retreat",
+              "target": [
+                0.17,
+                0.14,
+                0.15
+              ]
+            }
+          ]
+        }
+      ],
+      "reduced": {
+        "episode_length": 236.0,
+        "success_at_end": 1.0
+      },
+      "scene_id": "pen-layout-0",
+      "scene_metadata": {},
+      "status": "success",
+      "termination_reasons": [
+        "success"
+      ],
+      "trial_metadata": [
+        {
+          "actions": "actions/20261012_054201_42f2e1fb/pen-layout-0-e0.jsonl"
+        }
+      ]
+    },
+    {
+      "epochs": [
+        {
+          "episode_length": 236.0,
+          "success_at_end": 1.0
+        }
+      ],
+      "error": null,
+      "instruction": "put the pen in the bowl",
+      "judgement_sources": [
+        null
+      ],
+      "operator_judgements": [
+        null
+      ],
+      "operator_messages": [
+        []
+      ],
+      "operator_notes": [
+        null
+      ],
+      "policy_transcripts": [
+        {
+          "waypoints": [
+            {
+              "ik_err_m": 0.0,
+              "name": "above_pen",
+              "target": [
+                0.1541,
+                -0.0991,
+                0.08
+              ]
+            },
+            {
+              "ik_err_m": 0.0,
+              "name": "at_pen",
+              "target": [
+                0.1541,
+                -0.0991,
+                0.011
+              ]
+            },
+            {
+              "ik_err_m": 0.0,
+              "name": "grasp",
+              "target": [
+                0.1541,
+                -0.0991,
+                0.011
+              ]
+            },
+            {
+              "ik_err_m": 0.0034,
+              "name": "lift",
+              "target": [
+                0.1541,
+                -0.0991,
+                0.11
+              ]
+            },
+            {
+              "ik_err_m": 0.0028,
+              "name": "above_bowl",
+              "target": [
+                0.17,
+                0.14,
+                0.12
+              ]
+            },
+            {
+              "ik_err_m": 0.0,
+              "name": "lower",
+              "target": [
+                0.17,
+                0.14,
+                0.065
+              ]
+            },
+            {
+              "ik_err_m": 0.0,
+              "name": "release",
+              "target": [
+                0.17,
+                0.14,
+                0.065
+              ]
+            },
+            {
+              "ik_err_m": 0.0053,
+              "name": "retreat",
+              "target": [
+                0.17,
+                0.14,
+                0.15
+              ]
+            }
+          ]
+        }
+      ],
+      "reduced": {
+        "episode_length": 236.0,
+        "success_at_end": 1.0
+      },
+      "scene_id": "pen-layout-1",
+      "scene_metadata": {},
+      "status": "success",
+      "termination_reasons": [
+        "success"
+      ],
+      "trial_metadata": [
+        {
+          "actions": "actions/20261012_054201_42f2e1fb/pen-layout-1-e0.jsonl"
+        }
+      ]
+    },
+    {
+      "epochs": [
+        {
+          "episode_length": 236.0,
+          "success_at_end": 1.0
+        }
+      ],
+      "error": null,
+      "instruction": "put the pen in the bowl",
+      "judgement_sources": [
+        null
+      ],
+      "operator_judgements": [
+        null
+      ],
+      "operator_messages": [
+        []
+      ],
+      "operator_notes": [
+        null
+      ],
+      "policy_transcripts": [
+        {
+          "waypoints": [
+            {
+              "ik_err_m": 0.0,
+              "name": "above_pen",
+              "target": [
+                0.1637,
+                -0.0594,
+                0.08
+              ]
+            },
+            {
+              "ik_err_m": 0.0,
+              "name": "at_pen",
+              "target": [
+                0.1637,
+                -0.0594,
+                0.011
+              ]
+            },
+            {
+              "ik_err_m": 0.0,
+              "name": "grasp",
+              "target": [
+                0.1637,
+                -0.0594,
+                0.011
+              ]
+            },
+            {
+              "ik_err_m": 0.0052,
+              "name": "lift",
+              "target": [
+                0.1637,
+                -0.0594,
+                0.11
+              ]
+            },
+            {
+              "ik_err_m": 0.0028,
+              "name": "above_bowl",
+              "target": [
+                0.17,
+                0.14,
+                0.12
+              ]
+            },
+            {
+              "ik_err_m": 0.0,
+              "name": "lower",
+              "target": [
+                0.17,
+                0.14,
+                0.065
+              ]
+            },
+            {
+              "ik_err_m": 0.0,
+              "name": "release",
+              "target": [
+                0.17,
+                0.14,
+                0.065
+              ]
+            },
+            {
+              "ik_err_m": 0.0053,
+              "name": "retreat",
+              "target": [
+                0.17,
+                0.14,
+                0.15
+              ]
+            }
+          ]
+        }
+      ],
+      "reduced": {
+        "episode_length": 236.0,
+        "success_at_end": 1.0
+      },
+      "scene_id": "pen-layout-2",
+      "scene_metadata": {},
+      "status": "success",
+      "termination_reasons": [
+        "success"
+      ],
+      "trial_metadata": [
+        {
+          "actions": "actions/20261012_054201_42f2e1fb/pen-layout-2-e0.jsonl"
+        }
+      ]
+    },
+    {
+      "epochs": [
+        {
+          "episode_length": 237.0,
+          "success_at_end": 1.0
+        }
+      ],
+      "error": null,
+      "instruction": "put the pen in the bowl",
+      "judgement_sources": [
+        null
+      ],
+      "operator_judgements": [
+        null
+      ],
+      "operator_messages": [
+        []
+      ],
+      "operator_notes": [
+        null
+      ],
+      "policy_transcripts": [
+        {
+          "waypoints": [
+            {
+              "ik_err_m": 0.0,
+              "name": "above_pen",
+              "target": [
+                0.1979,
+                -0.0888,
+                0.08
+              ]
+            },
+            {
+              "ik_err_m": 0.0,
+              "name": "at_pen",
+              "target": [
+                0.1979,
+                -0.0888,
+                0.011
+              ]
+            },
+            {
+              "ik_err_m": 0.0,
+              "name": "grasp",
+              "target": [
+                0.1979,
+                -0.0888,
+                0.011
+              ]
+            },
+            {
+              "ik_err_m": 0.002,
+              "name": "lift",
+              "target": [
+                0.1979,
+                -0.0888,
+                0.11
+              ]
+            },
+            {
+              "ik_err_m": 0.0028,
+              "name": "above_bowl",
+              "target": [
+                0.17,
+                0.14,
+                0.12
+              ]
+            },
+            {
+              "ik_err_m": 0.0,
+              "name": "lower",
+              "target": [
+                0.17,
+                0.14,
+                0.065
+              ]
+            },
+            {
+              "ik_err_m": 0.0,
+              "name": "release",
+              "target": [
+                0.17,
+                0.14,
+                0.065
+              ]
+            },
+            {
+              "ik_err_m": 0.0053,
+              "name": "retreat",
+              "target": [
+                0.17,
+                0.14,
+                0.15
+              ]
+            }
+          ]
+        }
+      ],
+      "reduced": {
+        "episode_length": 237.0,
+        "success_at_end": 1.0
+      },
+      "scene_id": "pen-layout-3",
+      "scene_metadata": {},
+      "status": "success",
+      "termination_reasons": [
+        "success"
+      ],
+      "trial_metadata": [
+        {
+          "actions": "actions/20261012_054201_42f2e1fb/pen-layout-3-e0.jsonl"
+        }
+      ]
+    },
+    {
+      "epochs": [
+        {
+          "episode_length": 330.0,
+          "success_at_end": 0.0
+        }
+      ],
+      "error": null,
+      "instruction": "put the pen in the bowl",
+      "judgement_sources": [
+        null
+      ],
+      "operator_judgements": [
+        null
+      ],
+      "operator_messages": [
+        []
+      ],
+      "operator_notes": [
+        null
+      ],
+      "policy_transcripts": [
+        {
+          "waypoints": [
+            {
+              "ik_err_m": 0.0,
+              "name": "above_pen",
+              "target": [
+                0.186,
+                -0.0929,
+                0.08
+              ]
+            },
+            {
+              "ik_err_m": 0.0,
+              "name": "at_pen",
+              "target": [
+                0.186,
+                -0.0929,
+                0.011
+              ]
+            },
+            {
+              "ik_err_m": 0.0,
+              "name": "grasp",
+              "target": [
+                0.186,
+                -0.0929,
+                0.011
+              ]
+            },
+            {
+              "ik_err_m": 0.0022,
+              "name": "lift",
+              "target": [
+                0.186,
+                -0.0929,
+                0.11
+              ]
+            },
+            {
+              "ik_err_m": 0.0028,
+              "name": "above_bowl",
+              "target": [
+                0.17,
+                0.14,
+                0.12
+              ]
+            },
+            {
+              "ik_err_m": 0.0,
+              "name": "lower",
+              "target": [
+                0.17,
+                0.14,
+                0.065
+              ]
+            },
+            {
+              "ik_err_m": 0.0,
+              "name": "release",
+              "target": [
+                0.17,
+                0.14,
+                0.065
+              ]
+            },
+            {
+              "ik_err_m": 0.0053,
+              "name": "retreat",
+              "target": [
+                0.17,
+                0.14,
+                0.15
+              ]
+            }
+          ]
+        }
+      ],
+      "reduced": {
+        "episode_length": 330.0,
+        "success_at_end": 0.0
+      },
+      "scene_id": "pen-layout-4",
+      "scene_metadata": {},
+      "status": "success",
+      "termination_reasons": [
+        "max_steps"
+      ],
+      "trial_metadata": [
+        {
+          "actions": "actions/20261012_054201_42f2e1fb/pen-layout-4-e0.jsonl"
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "completed_at": "2026-10-12T05:42:42.745573+00:00",
+    "duration_s": 40.941840058000025,
+    "frames_dir": "/data/so101_isaac/logs/frames/20261012_054201_42f2e1fb",
+    "mean_inference_latency_s": null,
+    "started_at": "2026-10-12T05:42:01.803744+00:00",
+    "total_steps": 1275
+  },
+  "status": "success",
+  "version": 1
+}
