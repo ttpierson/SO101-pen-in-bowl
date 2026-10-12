@@ -3,154 +3,117 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Inspect Robots runs</title>
-<style>:root {
+<title>SO-101 Pen-in-Bowl Evals</title>
+<meta name="description" content="Inspect Robots evaluations of an SO-101 arm putting a pen in a bowl, in Isaac Sim and on a real arm.">
+<style>
+:root {
   color-scheme: light dark;
-  --bg: #f7f8fa;
-  --panel: #ffffff;
-  --text: #20242b;
-  --muted: #68707d;
-  --line: #dfe3e8;
-  --link: #245ca6;
-  --green: #19723b;
-  --green-bg: #e9f6ed;
-  --red: #a12a2a;
-  --red-bg: #fbecec;
-  --grey: #626a75;
-  --grey-bg: #eef0f2;
-  --amber: #8a5700;
-  --amber-bg: #fff5d9;
-  --neutral: #45546a;
-  --neutral-bg: #edf1f6;
-}
-@media (prefers-color-scheme: light) {
-  :root { color-scheme: light; }
+  --bg: #f7f8fa; --panel: #ffffff; --text: #20242b; --muted: #68707d; --line: #dfe3e8;
+  --link: #245ca6; --green: #19723b; --green-bg: #e9f6ed; --red: #a12a2a; --red-bg: #fbecec;
+  --amber: #8a5700; --amber-bg: #fff5d9;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #111419;
-    --panel: #191d24;
-    --text: #e7eaf0;
-    --muted: #a4acb8;
-    --line: #343a45;
-    --link: #8ebcff;
-    --green: #7ed99a;
-    --green-bg: #193b27;
-    --red: #ff9b9b;
-    --red-bg: #492323;
-    --grey: #c0c5cd;
-    --grey-bg: #343943;
-    --amber: #ffd484;
-    --amber-bg: #3b2d12;
-    --neutral: #b9c9df;
-    --neutral-bg: #293342;
+    --bg: #111419; --panel: #191d24; --text: #e7eaf0; --muted: #a4acb8; --line: #343a45;
+    --link: #8ebcff; --green: #7ed99a; --green-bg: #193b27; --red: #ff9b9b; --red-bg: #492323;
+    --amber: #ffd484; --amber-bg: #3b2d12;
   }
 }
 * { box-sizing: border-box; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font: 14px/1.45 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-header { border-bottom: 1px solid var(--line); background: var(--panel); }
-.header-inner, main { width: min(1500px, calc(100% - 32px)); margin: auto; }
-.header-inner { padding: 26px 0 20px; }
-h1 { margin: 0; font-size: 24px; font-weight: 650; }
-.meta { color: var(--muted); margin-top: 7px; }
-main { margin-bottom: 64px; }
-.toolbar { margin: 22px 0 14px; }
-label { display: block; color: var(--muted); font-size: 12px; margin-bottom: 5px; }
-input {
-  width: min(460px, 100%);
-  padding: 9px 11px;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  background: var(--panel);
-  color: var(--text);
-  font: inherit;
-}
-.table-wrap {
-  overflow-x: auto;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--panel);
-}
-table { width: 100%; border-collapse: collapse; }
-th, td { padding: 10px 12px; text-align: left; vertical-align: top; }
-th {
-  color: var(--muted);
-  border-bottom: 1px solid var(--line);
-  font-size: 11px;
-  font-weight: 650;
-  letter-spacing: .04em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-td { border-top: 1px solid var(--line); }
-tbody tr:first-child td { border-top: 0; }
-tbody tr:hover { background: var(--bg); }
+body { margin: 0; background: var(--bg); color: var(--text);
+  font: 15px/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
 a { color: var(--link); }
-.when, .policy, .metrics, .termination, .log { white-space: nowrap; }
-.instruction { min-width: 230px; max-width: 440px; }
-.error-cell { color: var(--red); min-width: 150px; max-width: 280px; overflow-wrap: anywhere; }
-.badge {
-  display: inline-block;
-  border-radius: 999px;
-  padding: 2px 9px;
-  font-size: 12px;
-  white-space: nowrap;
-}
-.status-completed { color: var(--green); background: var(--green-bg); }
-.status-running { color: var(--amber); background: var(--amber-bg); }
-.status-error { color: var(--red); background: var(--red-bg); }
-.status-cancelled { color: var(--grey); background: var(--grey-bg); }
-.status-neutral { color: var(--neutral); background: var(--neutral-bg); }
-.errored { color: var(--red); font-weight: 650; white-space: nowrap; }
-.muted, .empty { color: var(--muted); }
-.empty { padding: 28px 12px; text-align: center; }
-tbody tr[data-href] { cursor: pointer; }</style>
+header { background: var(--panel); border-bottom: 1px solid var(--line); }
+.wrap { width: min(1100px, calc(100% - 32px)); margin: auto; }
+header .wrap { padding: 28px 0 22px; }
+h1 { margin: 0 0 6px; font-size: 26px; font-weight: 650; }
+.sub { margin: 0; color: var(--muted); max-width: 70ch; }
+main { padding: 24px 0 48px; }
+.hero { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.hero img { width: 100%; border-radius: 10px; border: 1px solid var(--line); display: block; }
+.caption { color: var(--muted); font-size: 13px; margin-top: 6px; }
+.stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.stat { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+.stat .n { font-size: 26px; font-weight: 650; font-variant-numeric: tabular-nums; }
+.stat .l { color: var(--muted); font-size: 13px; }
+section { margin-top: 36px; }
+h2 { font-size: 19px; margin: 0 0 4px; }
+h2 + p { margin: 0 0 12px; color: var(--muted); }
+.table-wrap { overflow-x: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; }
+table { border-collapse: collapse; width: 100%; min-width: 720px; font-size: 14px; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .03em; }
+tr:last-child td { border-bottom: 0; }
+td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.pill { display: inline-block; padding: 1px 8px; border-radius: 999px; font-weight: 600; font-size: 13px; font-variant-numeric: tabular-nums; }
+.good { color: var(--green); background: var(--green-bg); }
+.mid { color: var(--amber); background: var(--amber-bg); }
+.bad { color: var(--red); background: var(--red-bg); }
+code { font-size: 13px; }
+footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding: 18px 0 28px; }
+@media (max-width: 760px) { .hero { grid-template-columns: 1fr; } }
+</style>
 </head>
 <body>
-<header><div class="header-inner">
-  <h1>Inspect Robots runs</h1>
-  <div class="meta">1 logs</div>
+<header><div class="wrap">
+  <h1>SO-101 pen-in-bowl evaluations</h1>
+  <p class="sub">An SO-101 arm is asked to "put the pen in the bowl", in Isaac Sim and on a real arm, and
+    evaluated with <a href="https://github.com/robocurve/inspect-robots">Inspect Robots</a>.
+    Each run links to its full replay: video from the overhead and wrist cameras, scores, and the
+    policy's step-by-step transcript.
+    Code: <a href="https://github.com/ttpierson/SO101-pen-in-bowl">ttpierson/SO101-pen-in-bowl</a>.</p>
 </div></header>
-<main>
-  <div class="toolbar">
-    <label for="filter">Filter runs</label>
-    <input id="filter" type="search" placeholder="instruction, policy, status, metric…">
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <img src="demo.gif" alt="Simulated SO-101 picking up a blue pen and dropping it into a red bowl, seen from the overhead camera and the wrist camera">
+      <div class="caption">Scripted IK baseline in Isaac Sim, overhead (left) and wrist (right) cameras.</div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="n">0.80</div><div class="l">Scripted IK baseline, 10 sim scenes</div></div>
+      <div class="stat"><div class="n">0.00</div><div class="l">GPT-6 Astra (LLM policy), sim</div></div>
+      <div class="stat"><div class="n">0 / 1</div><div class="l">GPT-6 Astra on the real arm, operator-graded</div></div>
+      <div class="stat"><div class="n">10</div><div class="l">Eval runs published here</div></div>
+    </div>
   </div>
-  <div class="table-wrap"><table>
-    <thead><tr>
-      <th>When</th><th>Instruction</th><th>Policy</th><th>Status</th>
-      <th>Metrics</th><th>Termination</th><th>Error</th><th>Log</th>
-    </tr></thead>
-    <tbody><tr data-href="adhoc_e4e77616.html"><td class="when"><time>2026-10-12T17:42:46.067723+00:00</time></td><td class="instruction"><a href="adhoc_e4e77616.html">put the pen in the bowl</a></td><td class="policy">agent <span class="muted">/ gpt-6-astra</span></td><td><span class="badge status-completed">completed</span></td><td class="metrics">operator=0</td><td class="termination">gave up</td><td class="error-cell"></td><td class="log"><a href="adhoc_e4e77616.html">adhoc_e4e77616.json</a></td></tr></tbody>
-  </table></div>
+
+  <section>
+    <h2>Physical SO-101</h2>
+    <p>A real arm with a wrist camera and no object positions from a simulator. The operator graded each trial (1 = success).
+      <a href="real/index.html">All physical runs →</a></p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Run (UTC)</th><th>Policy</th><th>Steps</th><th>Operator</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td class="num"><a href="adhoc_e4e77616.html">2026-10-12 17:42</a></td><td>agent (<code>openai/gpt-6-astra</code>)</td><td class="num">1195 / 1500</td><td><span class="pill bad">0</span></td>
+          <td>Gave up: the bowl kept blocking the wrist camera's view of the pen, and a grasp caught the bowl rim. Operator: "my setup was bad, it just tried moving the bowl to the pen."</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <h2>Isaac Sim</h2>
+    <p>Scored automatically with <code>success_at_end</code> (fraction of scenes where the pen ends at rest in the bowl). Episodes are at 30 Hz and capped at 330 steps.
+      <a href="sim/index.html">All sim runs →</a></p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Run (UTC)</th><th>Policy</th><th>Scenes</th><th>Success</th><th>Avg steps</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td class="num"><a href="sim/so101-pen-in-bowl_7e8920a0.html">2026-10-12 16:54</a></td><td>agent (<code>openai/gpt-6-astra</code>)</td><td class="num">1</td><td><span class="pill bad">0.00</span></td><td class="num">183</td><td>LLM policy; pushed the pen out of reach and gave up</td></tr>
+        <tr><td class="num"><a href="sim/so101-pen-in-bowl_05b17ca9.html">2026-10-12 06:00</a></td><td>scripted IK</td><td class="num">1</td><td><span class="pill good">1.00</span></td><td class="num">241</td><td>Live GUI run (the demo above)</td></tr>
+        <tr><td class="num"><a href="sim/so101-pen-in-bowl_18bf2e61.html">2026-10-12 05:58</a></td><td>scripted IK</td><td class="num">3</td><td><span class="pill mid">0.67</span></td><td class="num">273</td><td><code>ik_eval.sh</code> test</td></tr>
+        <tr><td class="num"><a href="sim/so101-pen-in-bowl_c8f98c2c.html">2026-10-12 05:51</a></td><td>scripted IK</td><td class="num">2</td><td><span class="pill good">1.00</span></td><td class="num">244</td><td>CLI run with guardrails on</td></tr>
+        <tr><td class="num"><a href="sim/so101-pen-in-bowl_7f33e1f2.html">2026-10-12 05:49</a></td><td>scripted IK</td><td class="num">2</td><td><span class="pill good">1.00</span></td><td class="num">244</td><td>First run through the <code>inspect-robots run</code> CLI</td></tr>
+        <tr><td class="num"><a href="sim/so101-pen-in-bowl_7f9050ce.html">2026-10-12 05:43</a></td><td>scripted IK</td><td class="num">10</td><td><span class="pill mid">0.80</span></td><td class="num">260</td><td><strong>Baseline result</strong>: the place step aims the pen's measured centre at the bowl</td></tr>
+        <tr><td class="num"><a href="sim/so101-pen-in-bowl_dc740cbc.html">2026-10-12 05:42</a></td><td>scripted IK</td><td class="num">5</td><td><span class="pill mid">0.80</span></td><td class="num">255</td><td>Release lowered to just above the rim</td></tr>
+        <tr><td class="num"><a href="sim/so101-pen-in-bowl_10aba762.html">2026-10-12 05:40</a></td><td>scripted IK</td><td class="num">5</td><td><span class="pill mid">0.60</span></td><td class="num">264</td><td>Pen made hexagonal so it stops rolling</td></tr>
+        <tr><td class="num"><a href="sim/so101-pen-in-bowl_9b518326.html">2026-10-11 22:04</a></td><td>scripted IK</td><td class="num">1</td><td><span class="pill bad">0.00</span></td><td class="num">330</td><td>Early attempt; the round pen rolled away before the grasp</td></tr>
+      </tbody>
+    </table></div>
+  </section>
 </main>
-<script>
-const key = "inspect-robots-index-filter", input = document.querySelector("#filter");
-const rows = document.querySelectorAll("tbody tr:not(.empty)");
-function applyFilter() {
-  const query = input.value.toLocaleLowerCase();
-  rows.forEach(row => row.hidden = !row.textContent.toLocaleLowerCase().includes(query));
-  try { localStorage.setItem(key, input.value); } catch (_) {}
-}
-try { input.value = localStorage.getItem(key) || ""; } catch (_) {}
-input.addEventListener("input", applyFilter);
-applyFilter();
-document.querySelector("tbody").addEventListener("click", event => {
-  const row = event.target.closest("tr[data-href]");
-  if (!row || event.target.closest("a") || getSelection().toString()) return;
-  if (event.shiftKey || event.altKey) return;
-  if (event.metaKey || event.ctrlKey) {
-    const opened = window.open(row.dataset.href, "_blank");
-    if (opened) opened.opener = null;
-  } else {
-    location.href = row.dataset.href;
-  }
-});
-</script>
+<footer><div class="wrap">
+  Built with <a href="https://github.com/robocurve/inspect-robots">Inspect Robots</a> by Robocurve, using
+  <a href="https://github.com/robocurve/inspect-robots-so101">inspect-robots-so101</a> for the real arm.
+  The replay pages are self-contained and can be large (up to 20 MB), so give them a moment to load.
+</div></footer>
 </body>
 </html>

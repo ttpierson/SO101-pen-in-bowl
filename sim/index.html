@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inspect Robots runs</title>
+<style>:root {
+  color-scheme: light dark;
+  --bg: #f7f8fa;
+  --panel: #ffffff;
+  --text: #20242b;
+  --muted: #68707d;
+  --line: #dfe3e8;
+  --link: #245ca6;
+  --green: #19723b;
+  --green-bg: #e9f6ed;
+  --red: #a12a2a;
+  --red-bg: #fbecec;
+  --grey: #626a75;
+  --grey-bg: #eef0f2;
+  --amber: #8a5700;
+  --amber-bg: #fff5d9;
+  --neutral: #45546a;
+  --neutral-bg: #edf1f6;
+}
+@media (prefers-color-scheme: light) {
+  :root { color-scheme: light; }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111419;
+    --panel: #191d24;
+    --text: #e7eaf0;
+    --muted: #a4acb8;
+    --line: #343a45;
+    --link: #8ebcff;
+    --green: #7ed99a;
+    --green-bg: #193b27;
+    --red: #ff9b9b;
+    --red-bg: #492323;
+    --grey: #c0c5cd;
+    --grey-bg: #343943;
+    --amber: #ffd484;
+    --amber-bg: #3b2d12;
+    --neutral: #b9c9df;
+    --neutral-bg: #293342;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.45 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+header { border-bottom: 1px solid var(--line); background: var(--panel); }
+.header-inner, main { width: min(1500px, calc(100% - 32px)); margin: auto; }
+.header-inner { padding: 26px 0 20px; }
+h1 { margin: 0; font-size: 24px; font-weight: 650; }
+.meta { color: var(--muted); margin-top: 7px; }
+main { margin-bottom: 64px; }
+.toolbar { margin: 22px 0 14px; }
+label { display: block; color: var(--muted); font-size: 12px; margin-bottom: 5px; }
+input {
+  width: min(460px, 100%);
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--panel);
+  color: var(--text);
+  font: inherit;
+}
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 10px 12px; text-align: left; vertical-align: top; }
+th {
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+td { border-top: 1px solid var(--line); }
+tbody tr:first-child td { border-top: 0; }
+tbody tr:hover { background: var(--bg); }
+a { color: var(--link); }
+.when, .policy, .metrics, .termination, .log { white-space: nowrap; }
+.instruction { min-width: 230px; max-width: 440px; }
+.error-cell { color: var(--red); min-width: 150px; max-width: 280px; overflow-wrap: anywhere; }
+.badge {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 2px 9px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.status-completed { color: var(--green); background: var(--green-bg); }
+.status-running { color: var(--amber); background: var(--amber-bg); }
+.status-error { color: var(--red); background: var(--red-bg); }
+.status-cancelled { color: var(--grey); background: var(--grey-bg); }
+.status-neutral { color: var(--neutral); background: var(--neutral-bg); }
+.errored { color: var(--red); font-weight: 650; white-space: nowrap; }
+.muted, .empty { color: var(--muted); }
+.empty { padding: 28px 12px; text-align: center; }
+tbody tr[data-href] { cursor: pointer; }</style>
+</head>
+<body>
+<header><div class="header-inner">
+  <h1>Inspect Robots runs</h1>
+  <div class="meta">9 logs</div>
+</div></header>
+<main>
+  <div class="toolbar">
+    <label for="filter">Filter runs</label>
+    <input id="filter" type="search" placeholder="instruction, policy, status, metric…">
+  </div>
+  <div class="table-wrap"><table>
+    <thead><tr>
+      <th>When</th><th>Instruction</th><th>Policy</th><th>Status</th>
+      <th>Metrics</th><th>Termination</th><th>Error</th><th>Log</th>
+    </tr></thead>
+    <tbody><tr data-href="so101-pen-in-bowl_7e8920a0.html"><td class="when"><time>2026-10-12T16:54:30.359307+00:00</time></td><td class="instruction"><a href="so101-pen-in-bowl_7e8920a0.html">put the pen in the bowl</a></td><td class="policy">agent <span class="muted">/ gpt-6-astra</span></td><td><span class="badge status-completed">completed</span></td><td class="metrics">episode_length=183, success_at_end=0</td><td class="termination">gave up</td><td class="error-cell"></td><td class="log"><a href="so101-pen-in-bowl_7e8920a0.html">so101-pen-in-bowl_7e8920a0.json</a></td></tr><tr data-href="so101-pen-in-bowl_05b17ca9.html"><td class="when"><time>2026-10-12T06:00:04.944565+00:00</time></td><td class="instruction"><a href="so101-pen-in-bowl_05b17ca9.html">put the pen in the bowl</a></td><td class="policy">so101_ik_pick_place</td><td><span class="badge status-completed">completed</span></td><td class="metrics">episode_length=241, success_at_end=1</td><td class="termination">succeeded</td><td class="error-cell"></td><td class="log"><a href="so101-pen-in-bowl_05b17ca9.html">so101-pen-in-bowl_05b17ca9.json</a></td></tr><tr data-href="so101-pen-in-bowl_18bf2e61.html"><td class="when"><time>2026-10-12T05:58:38.525678+00:00</time></td><td class="instruction"><a href="so101-pen-in-bowl_18bf2e61.html">put the pen in the bowl</a></td><td class="policy">so101_ik_pick_place</td><td><span class="badge status-completed">completed</span></td><td class="metrics">episode_length=273, success_at_end=0.6667</td><td class="termination">succeeded, hit step limit</td><td class="error-cell"></td><td class="log"><a href="so101-pen-in-bowl_18bf2e61.html">so101-pen-in-bowl_18bf2e61.json</a></td></tr><tr data-href="so101-pen-in-bowl_c8f98c2c.html"><td class="when"><time>2026-10-12T05:51:10.982837+00:00</time></td><td class="instruction"><a href="so101-pen-in-bowl_c8f98c2c.html">put the pen in the bowl</a></td><td class="policy">so101_ik_pick_place</td><td><span class="badge status-completed">completed</span></td><td class="metrics">episode_length=244.5, success_at_end=1</td><td class="termination">succeeded</td><td class="error-cell"></td><td class="log"><a href="so101-pen-in-bowl_c8f98c2c.html">so101-pen-in-bowl_c8f98c2c.json</a></td></tr><tr data-href="so101-pen-in-bowl_7f33e1f2.html"><td class="when"><time>2026-10-12T05:49:53.895775+00:00</time></td><td class="instruction"><a href="so101-pen-in-bowl_7f33e1f2.html">put the pen in the bowl</a></td><td class="policy">so101_ik_pick_place</td><td><span class="badge status-completed">completed</span></td><td class="metrics">episode_length=244.5, success_at_end=1</td><td class="termination">succeeded</td><td class="error-cell"></td><td class="log"><a href="so101-pen-in-bowl_7f33e1f2.html">so101-pen-in-bowl_7f33e1f2.json</a></td></tr><tr data-href="so101-pen-in-bowl_7f9050ce.html"><td class="when"><time>2026-10-12T05:43:34.648160+00:00</time></td><td class="instruction"><a href="so101-pen-in-bowl_7f9050ce.html">put the pen in the bowl</a></td><td class="policy">so101_ik_pick_place</td><td><span class="badge status-completed">completed</span></td><td class="metrics">episode_length=260.3, success_at_end=0.8</td><td class="termination">succeeded, hit step limit</td><td class="error-cell"></td><td class="log"><a href="so101-pen-in-bowl_7f9050ce.html">so101-pen-in-bowl_7f9050ce.json</a></td></tr><tr data-href="so101-pen-in-bowl_dc740cbc.html"><td class="when"><time>2026-10-12T05:42:01.800980+00:00</time></td><td class="instruction"><a href="so101-pen-in-bowl_dc740cbc.html">put the pen in the bowl</a></td><td class="policy">so101_ik_pick_place</td><td><span class="badge status-completed">completed</span></td><td class="metrics">episode_length=255, success_at_end=0.8</td><td class="termination">succeeded, hit step limit</td><td class="error-cell"></td><td class="log"><a href="so101-pen-in-bowl_dc740cbc.html">so101-pen-in-bowl_dc740cbc.json</a></td></tr><tr data-href="so101-pen-in-bowl_10aba762.html"><td class="when"><time>2026-10-12T05:40:24.350520+00:00</time></td><td class="instruction"><a href="so101-pen-in-bowl_10aba762.html">put the pen in the bowl</a></td><td class="policy">so101_ik_pick_place</td><td><span class="badge status-completed">completed</span></td><td class="metrics">episode_length=264, success_at_end=0.6</td><td class="termination">hit step limit, succeeded</td><td class="error-cell"></td><td class="log"><a href="so101-pen-in-bowl_10aba762.html">so101-pen-in-bowl_10aba762.json</a></td></tr><tr data-href="so101-pen-in-bowl_9b518326.html"><td class="when"><time>2026-10-11T22:04:24.673130+00:00</time></td><td class="instruction"><a href="so101-pen-in-bowl_9b518326.html">put the pen in the bowl</a></td><td class="policy">so101_ik_pick_place</td><td><span class="badge status-completed">completed</span></td><td class="metrics">episode_length=330, success_at_end=0</td><td class="termination">hit step limit</td><td class="error-cell"></td><td class="log"><a href="so101-pen-in-bowl_9b518326.html">so101-pen-in-bowl_9b518326.json</a></td></tr></tbody>
+  </table></div>
+</main>
+<script>
+const key = "inspect-robots-index-filter", input = document.querySelector("#filter");
+const rows = document.querySelectorAll("tbody tr:not(.empty)");
+function applyFilter() {
+  const query = input.value.toLocaleLowerCase();
+  rows.forEach(row => row.hidden = !row.textContent.toLocaleLowerCase().includes(query));
+  try { localStorage.setItem(key, input.value); } catch (_) {}
+}
+try { input.value = localStorage.getItem(key) || ""; } catch (_) {}
+input.addEventListener("input", applyFilter);
+applyFilter();
+document.querySelector("tbody").addEventListener("click", event => {
+  const row = event.target.closest("tr[data-href]");
+  if (!row || event.target.closest("a") || getSelection().toString()) return;
+  if (event.shiftKey || event.altKey) return;
+  if (event.metaKey || event.ctrlKey) {
+    const opened = window.open(row.dataset.href, "_blank");
+    if (opened) opened.opener = null;
+  } else {
+    location.href = row.dataset.href;
+  }
+});
+</script>
+</body>
+</html>
