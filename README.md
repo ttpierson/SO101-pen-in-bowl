@@ -18,6 +18,14 @@ This branch holds the logs of every test run of the [`main`](../../tree/main) br
 `success_at_end` is the fraction of scenes where the pen ended at rest inside the bowl.
 `episode_length` is the mean number of steps at 30 Hz; 330 means the step limit was reached.
 
+## Physical SO-101 runs
+
+These are on a real arm with a wrist camera, graded by the operator (`operator`: 1 = success, 0 = fail).
+
+| Run (UTC) | Log | Policy | Steps | operator | Notes |
+|---|---|---|---|---|---|
+| 2026-10-12 17:42 | [adhoc_e4e77616](logs_real/html/adhoc_e4e77616.html) · [json](logs_real/adhoc_e4e77616.json) | agent (`openai/gpt-6-astra`) | 1195 / 1500 | 0 | Gave up: the bowl kept blocking the wrist camera's view of the pen, and a grasp caught the bowl rim. Operator: "my setup was bad, it just tried moving the bowl to the pen" |
+
 ## What's here
 
 | Path | Contents |
@@ -26,10 +34,11 @@ This branch holds the logs of every test run of the [`main`](../../tree/main) br
 | `logs/html/` | Self-contained HTML replays (video + transcript per trial). `index.html` lists every run. |
 | `logs/actions/` | Per-step actions (JSONL), one folder per run. |
 | `logs/transcripts/` | Policy transcripts written alongside the logs. |
+| `logs_real/` | The same files for runs on the physical arm. |
 
 These are not included:
-- the raw per-step camera frames (`.npy`, about 3.4 GB); the HTML pages embed the videos instead
-- the LLM run's raw API traffic
+- the raw per-step camera frames (`.npy`: about 3.4 GB sim, 1.1 GB real); the HTML pages embed the videos instead
+- the LLM runs' raw API traffic
 
 ## Viewing
 
