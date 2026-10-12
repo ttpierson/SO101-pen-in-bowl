@@ -15,13 +15,14 @@ dependencies = [
 ]
 
 [tool.setuptools]
-py-modules = ["so101_inspect", "ik_policy", "run_eval", "so101_kinematics", "pen_bowl_env", "so101_cfg"]
+py-modules = ["so101_inspect", "so101_real", "ik_policy", "run_eval", "so101_kinematics", "pen_bowl_env", "so101_cfg"]
 
 [project.entry-points."inspect_robots.policies"]
 so101_ik = "so101_inspect:ik_policy"
 
 [project.entry-points."inspect_robots.embodiments"]
 so101_pen_bowl = "so101_inspect:pen_bowl_embodiment"
+so101_real = "so101_real:real_embodiment"
 
 [project.entry-points."inspect_robots.tasks"]
 so101-pen-in-bowl = "so101_inspect:pen_bowl_task"

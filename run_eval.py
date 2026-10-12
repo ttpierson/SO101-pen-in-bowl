@@ -58,6 +58,9 @@ class SO101PenBowlEmbodiment(IsaacSimEmbodiment):
             StateField("pen_pos", (3,), "m"),
             StateField("pen_quat", (4,), "unit_quat"),
             StateField("bowl_pos", (3,), "m"),
+            # Same layout as the action (5 joints rad + gripper 0 open / 1 closed): the reference an
+            # absolute-target policy such as the inspect-robots-agent LLM policy plans from.
+            StateField("joint_cmd", (6,), ""),
         )
         self.info = dataclasses.replace(
             self.info,

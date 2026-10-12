@@ -5,3 +5,4 @@ logs/
 frames/
 *.log
 .env
+logs_real/

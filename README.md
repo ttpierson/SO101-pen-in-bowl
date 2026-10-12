@@ -55,6 +55,8 @@ If you use this work, please also cite Inspect Robots:
 | `ik_eval.sh` | One-command run + replay-page render; `--gui` shows the sim live on the noVNC desktop. |
 | `preview_scene.py` | Standalone GUI preview of the scene layout. Note: it still uses a round pen. |
 | `scripts/start_desktop.sh`, `scripts/run_isaaclab_gui.sh` | Xvfb + xfce + x11vnc + noVNC desktop (port 6080) for watching Isaac on a headless GPU box. |
+| `so101_real.py` | Embodiment `so101_real`: the physical SO-101 through [`inspect-robots-so101`](https://github.com/robocurve/inspect-robots-so101) (LeRobot driver). It has the wrist camera, joint limits taken from the LeRobot calibration (minus 5°), and a 3°/step slew limit. |
+| `real_notes.md`, `real_eval.sh` | Robot notes given to the LLM policy (`prior_learnings`), and the one-command real-arm run with operator grading. |
 | `debug_grasp.py`, `debug_pen.py` | Diagnostics: FK vs Isaac body poses during a grasp, and pen drift with the arm held still. |
 
 ## Setup
@@ -93,6 +95,37 @@ inspect-robots view logs --serve --port 8300
 inspect-robots inspect logs/<run>.json       # scores in the terminal
 inspect-robots video logs/<run>.json         # one MP4 per camera per trial
 ```
+
+## Real SO-101
+
+The same evaluation runs on a physical SO-101 with a wrist camera, here driven by an LLM
+policy (`openai/gpt-6-astra` over OpenRouter, via `inspect-robots-agent`). A real setup has no
+privileged object positions, so the model works only from the wrist camera. An operator grades
+each trial.
+
+Setup, in the LeRobot env (Python ≥ 3.12, LeRobot ≥ 0.5):
+1. Calibrate the arm once with LeRobot:
+   ```bash
+   lerobot-calibrate --robot.type=so101_follower --robot.port=/dev/ttyACM0 --robot.id=my_follower
+   ```
+2. Install the packages (all editable from local clones):
+   ```bash
+   pip install -e <inspect-robots> -e <inspect-robots-so101> -e <inspect-robots>/plugins/inspect-robots-agent
+   pip install --no-deps -e .
+   ```
+3. Give your user access to the arm and the camera (`dialout` and `video` groups).
+   Put `OPENROUTER_API_KEY=...` in `./.env`; it's gitignored and auto-loaded by `inspect-robots`.
+
+Then, in an interactive terminal:
+```bash
+./real_eval.sh        # confirm the scene is ready, Esc ends a trial, then grade y/n/partial
+```
+`-E port=… -E camera=/dev/video1 -E robot_id=…` override the defaults in `so101_real.py`.
+
+First physical trial (2026-10-12): the model gave up after about 1,200 steps and was graded 0.
+The bowl repeatedly blocked the wrist camera's view of the pen, and one grasp caught the bowl
+rim instead of the pen. The operator's note was that the setup itself was poor. The log and
+replay are on the [`eval-logs`](../../tree/eval-logs) branch.
 
 ## Notes
 

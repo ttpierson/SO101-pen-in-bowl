@@ -61,7 +61,7 @@ class PenBowlEnvCfg(DirectRLEnvCfg):
     episode_length_s = 20.0
     action_space = 6
     observation_space = {
-        "joint_pos": 5, "joint_vel": 5, "eef_pos": 3, "eef_quat": 4, "gripper": 1,
+        "joint_pos": 5, "joint_vel": 5, "eef_pos": 3, "eef_quat": 4, "gripper": 1, "joint_cmd": 6,
         "pen_pos": 3, "pen_quat": 4, "bowl_pos": 3,
         "overhead": [CAM_H, CAM_W, 3], "wrist": [CAM_H, CAM_W, 3],
     }  # fmt: skip
@@ -185,6 +185,10 @@ class PenBowlEnv(DirectRLEnv):
             "eef_pos": self.robot.data.body_pos_w[:, self._eef_id] - base,
             "eef_quat": self.robot.data.body_quat_w[:, self._eef_id],
             "gripper": ((grip - GRIPPER_CLOSED) / (GRIPPER_OPEN - GRIPPER_CLOSED)).clamp(0.0, 1.0),
+            # The current state in action units: arm joints + commanded gripper (1 = closed).
+            "joint_cmd": torch.cat(
+                [self.robot.data.joint_pos[:, self._arm_ids], self._gripper_closed.float().unsqueeze(-1)], dim=-1
+            ),
             "pen_pos": self.pen.data.root_pos_w - base,
             "pen_quat": self.pen.data.root_quat_w,
             "bowl_pos": self._bowl_pos_b,
