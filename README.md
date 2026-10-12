@@ -1,5 +1,7 @@
 # SO-101 pen-in-bowl (Isaac Lab + Inspect Robots)
 
+**[View the evaluation results and replays →](https://ttpierson.com/SO101-pen-in-bowl/)**
+
 ![SO-101 putting the pen in the bowl: overhead camera (left) and wrist camera (right)](media/demo.gif)
 
 An Isaac Lab task where an SO-101 arm puts a pen into a bowl, a scripted inverse-kinematics
