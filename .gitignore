@@ -4,3 +4,4 @@ build/
 logs/
 frames/
 *.log
+.env
