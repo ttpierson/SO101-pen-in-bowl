@@ -1,5 +1,7 @@
 # SO-101 pen-in-bowl (Isaac Lab + Inspect Robots)
 
+![SO-101 putting the pen in the bowl: overhead camera (left) and wrist camera (right)](media/demo.gif)
+
 An Isaac Lab task where an SO-101 arm puts a pen into a bowl, a scripted inverse-kinematics
 pick-and-place baseline, and the [Inspect Robots](https://github.com/robocurve/inspect-robots)
 plugins that let you run, score, and replay it from the `inspect-robots` CLI.
@@ -8,7 +10,7 @@ plugins that let you run, score, and replay it from the `inspect-robots` CLI.
 |---|---|
 | [media/pen-layout-0-e0_overhead.mp4](media/pen-layout-0-e0_overhead.mp4) | [media/pen-layout-0-e0_wrist.mp4](media/pen-layout-0-e0_wrist.mp4) |
 
-These are `inspect-robots video` renders of one successful trial. Its eval log is
+These are `inspect-robots video` renders of one successful trial (the GIF above is the two side by side). Its eval log is
 [media/eval_log_example.json](media/eval_log_example.json).
 
 The scripted baseline scores about 8/10 on `-T scenes=10`. The usual failures are the opening jaw
